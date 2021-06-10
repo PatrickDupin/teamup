@@ -1,0 +1,50 @@
+version: "3.7" 
+services:
+
+  app:
+    build:
+      args:
+        user: patrick
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: team-up-app
+    container_name: team-up-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks: 
+      - teamup
+
+  db:
+    image: mysql:8
+    container_name: team-up-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABSE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - teamup
+
+  nginx:  
+    image: nginx:alpine
+    container_name: team-up-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - teamup
+
+networks: 
+  teamup:
+    driver: bridge
