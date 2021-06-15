@@ -22,10 +22,10 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Instalar última versão do Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Criar usuário de sistema para rodar comandos Composer e Artisan
-RUN useradd -G www-data, root - $uid -d /home/$user $user
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
