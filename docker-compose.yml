@@ -38,9 +38,12 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_PASSWORD: 1234
       MYSQL_USER: teamup
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - teamup
-
 
 networks: 
   teamup:

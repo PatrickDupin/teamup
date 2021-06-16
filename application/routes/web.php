@@ -18,4 +18,8 @@ use App\Http\Controllers\JogadoresController;
 Route::get('/', function () {
     return view('template.index');
 });
+
+Route::get('/test/env', function () {
+    dd(env('DB_PASSWORD')); // dump db variable value one by one
+});
 Route::get('jogadores/', [JogadoresController::class, 'index']);
