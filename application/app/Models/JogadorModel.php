@@ -8,5 +8,6 @@ class JogadorModel extends Model
 {
     public $timestamps = false;
     protected $fillable = ['nome'];
+    protected $table = 'tblJogadores as j';
 
 }

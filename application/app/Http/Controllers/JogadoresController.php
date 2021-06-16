@@ -8,32 +8,12 @@ use App\Models\JogadorModel;
 
 class JogadoresController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $atletas = [
-            'Matheus',
-            'Paulo',
-            'Araújo',
-            'Carlos Alexandre',
-            'Rogério',
-            'Bruno',
-            'Maurinho',
-            'Rafão',
-            'Luís',
-            'Agnelo',
-            'Marquim',
-            'Gugu',
-            'Patrick',
-            'Osvaldo',
-            'André',
-            'Leonardo',
-            'Didu',
-            'Danilo'
-        ];
-
-        //$atletas = JogadorModel::query()
-        //                        ->orderBy('nome')
-        //                        ->get();
+        $atletas = Jogadormodel::query()
+            ->orderBy('goleiro', 'desc')
+            ->orderBy('nome')
+            ->get();
 
         return view('players.index', compact('atletas'));
     }
