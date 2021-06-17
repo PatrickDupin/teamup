@@ -30,14 +30,14 @@ services:
       - teamup
 
   db:
-    image: mysql:8
+    image: mysql:5.7
     container_name: team-up-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: teamup_db
-      MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_PASSWORD: 1234
-      MYSQL_USER: teamup
+      MYSQL_ROOT_PASSWORD: 1qazxsw2
+      MYSQL_PASSWORD: 1qazxsw2
+      MYSQL_USER: justin
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:

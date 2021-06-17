@@ -15,7 +15,7 @@ INSERT INTO `tblJogadores` (nome,nivel,goleiro)
     ('Araújo', 3, 0),
     ('Bruno', 2, 0),
     ('Carlos Alexandre', 3, 0),
-    ('Danilo', 5, 0);
+    ('Danilo', 5, 0),
     ('Didu', 4, 0),
     ('Gugu', 5, 0),
     ('Leonardo', 5, 0),
@@ -27,11 +27,4 @@ INSERT INTO `tblJogadores` (nome,nivel,goleiro)
     ('Patrick', 4, 0),
     ('Paulo', 5, 1),
     ('Rafão', 2, 0),
-    ('Rogério', 2, 0),
-
-
-
-
-
-
-
+    ('Rogério', 2, 0);

@@ -23,3 +23,4 @@ Route::get('/test/env', function () {
     dd(env('DB_PASSWORD')); // dump db variable value one by one
 });
 Route::get('jogadores/', [JogadoresController::class, 'index']);
+Route::post('jogadores/sortear/', [JogadoresController::class, 'sortear']);

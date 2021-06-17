@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="alert">
-        <form>
+        <form method="post" action="/jogadores/sortear" onsubmit="return confirm('Deseja sortear as equipes?')">
             @csrf
             <ul class="collection">
                 <li class="collection-header"><h4>Players</h4></li>
@@ -20,18 +20,22 @@
                         <i class="material-icons little">grade</i>
                         @endfor
 
-                    <label class="secondary-content">
-                        <input name="confirma-presenca" type="checkbox" class="filled-in" value="{{ $atleta->id }}" />
-                        <span></span>
-                    </label>
+                        <div class="secondary-content">
+                            <div class="switch">
+                                <label>
+                                    Tô Off
+                                    <input id="{{ $atleta->id }}" name="confirmar-presenca[]" type="checkbox" value="{{ $atleta->id }}">
+                                    <span class="lever"></span>
+                                    Tô On
+                                </label>
+                            </div>
+                        </div>
                 </li>
                 @endforeach
             </ul>
-            <button class="btn waves-effect waves-light" type="submit" name="action"
-                    onsubmit="return confirm('Tem certeza que deseja sortear as equipes?')">Montar a panelinha
+            <button class="btn waves-effect waves-light" type="submit" name="action">Montar a panelinha
                 <i class="material-icons right" style="transform: rotate(15deg)">casino</i>
             </button>
         </form>
     </div>
-
 @endsection
