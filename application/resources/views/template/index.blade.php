@@ -17,12 +17,7 @@
         <nav>
             <div class="nav-wrapper teal lighten-1">
                 <div class="container">
-                    <a href="#" class="brand-logo">Logo</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="sass.html">Inicio</a></li>
-                        <li><a href="badges.html">Escalação</a></li>
-                        <li><a href="collapsible.html">Contato</a></li>
-                    </ul>
+                    <a href="#" class="brand-logo center">Logo</a>
                 </div>
             </div>
         </nav>
@@ -34,7 +29,7 @@
         </div>
     </main>
 
-    <footer class="page-footer teal lighten-1">
+    <footer class="page-footer teal lighten-1" style="bottom:0;position:fixed;width:100%">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">

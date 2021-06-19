@@ -8,6 +8,7 @@ use App\Models\JogadorModel;
 
 class JogadoresController extends Controller
 {
+
     public function index(Request $request)
     {
         $atletas = Jogadormodel::query()
@@ -18,32 +19,66 @@ class JogadoresController extends Controller
         return view('times.jogadores', compact('atletas'));
     }
 
-    public function sortear(Request $request)
+
+    public function escalacao(Request $request)
     {
-        $jogadores_cofirmados = $request->input('confirmar-presenca');
-        $numJogadores = sizeof($jogadores_cofirmados);
+        $jogadoresConfirmados = $request->input('confirmar-presenca');
+
+        $times = $this->sortearEquipes($jogadoresConfirmados);
+
+
+
+        // $times = Jogadormodel::where('id', $times[0][3])->get();
+
+        // echo json_decode($jogador);
+        // dd($jogador);
+
+
+        foreach ($times as $key => $value) {
+            $times[$key] = Jogadormodel::whereIn('id', $times[$key])->get();
+        }
+
+
+
+
+// dd($time);
+// die();
+        
+// foreach ($jogador as $key => $value) {
+
+//     foreach ($value as $k => $v) {
+//         $teste2 = $v;
+//     }
+// }
+
+        return view('times.escalacao', compact('times'));
+    }
+
+    private function sortearEquipes($jogadoresConfirmados)
+    {
+
+        $totalDeJogadores = sizeof($jogadoresConfirmados);
         $time = [];
 
-        $contator = 1;
+        $contadorJogadores = 1;
         $contadorTimeCompletos=0;
 
-        while ($numJogadores > 0 ){
-            sort($jogadores_cofirmados);
+        while ($totalDeJogadores > 0 ){
+            sort($jogadoresConfirmados);
 
-            $sorteado = rand(0, (sizeof($jogadores_cofirmados) - 1));
-            $time[$contadorTimeCompletos][] = $jogadores_cofirmados[$sorteado];
-            unset($jogadores_cofirmados[$sorteado]);
-            if ($contator == 5) {
-                $contator = 0;
+            $jogadorEscolhido = rand(0, (sizeof($jogadoresConfirmados) - 1));
+            $time[$contadorTimeCompletos][] = $jogadoresConfirmados[$jogadorEscolhido];
+            unset($jogadoresConfirmados[$jogadorEscolhido]);
+
+            if ($contadorJogadores === 5) {
+                $contadorJogadores = 0;
                 $contadorTimeCompletos++;
             }
-            $numJogadores = sizeof($jogadores_cofirmados);
-            $contator++;
+
+            $contadorJogadores++;
+            $totalDeJogadores = sizeof($jogadoresConfirmados);
         }
-        dd($time);
 
-        die();
-
-        return view('times.escalacao', compact('jogadores_cofirmados'));
+        return $time;
     }
 }

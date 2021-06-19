@@ -1,9 +1,14 @@
 @extends('template.index')
 
 @section('content')
-    <ul>
-    @foreach($jogadores_cofirmados as $jogador)
-        <li>{{ $jogador }}</li>
+
+    @foreach($times as $time)
+        <ul>
+        @foreach($time as $escalacao)
+            <li>{{ utf8_decode($escalacao->nome) }}</li>
+        @endforeach
+        </ul>
+        <hr />
     @endforeach
-    </ul>
+
 @endsection
