@@ -11,40 +11,43 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../resources/css/app.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-wrapper teal lighten-1">
                 <div class="container">
-                    <a href="#" class="brand-logo center">Logo</a>
+                    <a href="/jogadores" class="brand-logo center">Logo</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="m-6">
-        <div class="container">
-            @yield('content')
-        </div>
-    </main>
+    <div id="wrapper">
+        <main class="m-6 body-content">
+            <div class="container">
+                @yield('content')
+            </div>
+        </main>
 
-    <footer class="page-footer teal lighten-1" style="bottom:0;position:fixed;width:100%">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        <footer class="page-footer teal lighten-1 fixar-rodape">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Footer Content</h5>
+                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © <?php echo date('Y') ?> Copyright
-                <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/patrickdupin/">Patrick Dupin</a>
+            <div class="footer-copyright">
+                <div class="container">
+                    © <?php echo date('Y') ?> Copyright
+                    <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/patrickdupin/">Patrick Dupin</a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

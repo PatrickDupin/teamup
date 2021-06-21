@@ -26,30 +26,9 @@ class JogadoresController extends Controller
 
         $times = $this->sortearEquipes($jogadoresConfirmados);
 
-
-
-        // $times = Jogadormodel::where('id', $times[0][3])->get();
-
-        // echo json_decode($jogador);
-        // dd($jogador);
-
-
         foreach ($times as $key => $value) {
             $times[$key] = Jogadormodel::whereIn('id', $times[$key])->get();
         }
-
-
-
-
-// dd($time);
-// die();
-        
-// foreach ($jogador as $key => $value) {
-
-//     foreach ($value as $k => $v) {
-//         $teste2 = $v;
-//     }
-// }
 
         return view('times.escalacao', compact('times'));
     }
